@@ -1,0 +1,26 @@
+img {
+  width: 110% !important;
+  margin-left: -5%;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+
+.caption {
+  position: absolute;
+  font-family: Helvetica;
+  font-size: 18px;
+  color: white;
+  z-index: 10;
+  background-color: transparent;
+  text-align: center;
+  width: 100%;
+  top: 48.5%;
+}
+
+span {
+  background-color: black;
+}
