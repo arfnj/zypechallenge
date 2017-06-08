@@ -1,5 +1,5 @@
 const xhr = new XMLHttpRequest();
-const defaultImg = "./unicorn.jpeg"
+const defaultImg = "./testpattern-hd-1080.png"
 let videos;
 
 const getVids = () => {
