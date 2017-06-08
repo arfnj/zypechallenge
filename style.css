@@ -1,3 +1,7 @@
+.slides {
+  display: none;
+}
+
 img {
   width: 110% !important;
   margin-left: -5%;
