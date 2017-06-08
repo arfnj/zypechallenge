@@ -30,13 +30,21 @@ img {
 
 .caption {
   height: 206px;
-  top: 48.5%;
   border-top: 20px;
   border-left: 0px;
   border-bottom: 20px;
   border-right: 0px;
   border-color: white;
   border-style: solid;
+  display: -webkit-flexbox;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .captions {
