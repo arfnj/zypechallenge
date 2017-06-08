@@ -7,13 +7,14 @@ img {
   margin-left: -5%;
 }
 
-.container {
+.parallax {
+  display: none;
   position: relative;
   width: 100%;
   perspective: 1px;
   overflow-x: hidden;
   overflow-y: auto;
-  height: 20vh;
+  height: 100vh;
 }
 
 .layer {
@@ -24,11 +25,11 @@ img {
   left: 0;
 }
 
-.thumb {
+.thumbs {
   transform: translateZ(-1px) scale(2);
 }
 
-.caption {
+.captions {
   position: absolute;
   font-family: Helvetica;
   font-size: 18px;

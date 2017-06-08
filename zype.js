@@ -1,6 +1,6 @@
 const xhr = new XMLHttpRequest();
 const defaultImg = "./unicorn.jpeg"
-let videos, slideshow;
+let videos;
 
 const getVids = () => {
   return new Promise((resolve, reject) => {
@@ -20,15 +20,18 @@ const getVids = () => {
 getVids()
   .then(response => {
     videos = JSON.parse(response).response;
-    let slideshow = $.map(videos,function(video){
-      return (`<div class="container"><div class="layer thumb"><img src="${video.thumbnails[4].url}"></div><div class="layer caption"><span></b>${video.title}</b></span></div></div>`);
+    let slideshow = [],captions = [];
+    videos.forEach(video => {
+      slideshow.push(`<img src="${video.thumbnails[4].url}">`);
+      captions.push(`<div class="caption"><span></b>${video.title}</b></span></div>`)
     });
-    $(".slides").html(slideshow.join(''));
+    $(".thumbs").append(slideshow.join(''));
+    $(".captions").append(captions.join(''));
   }, error => console.log('ERROR: ', error))
   .then(data => {
     console.log('EXAMINING');
     let i = 0;
-    $("div.slides").find("img").each(function() {
+    $("div.thumbs").find("img").each(function() {
       i++;
       console.log(i);
       if ($(this)[0].naturalWidth === 120 && $(this)[0].naturalHeight === 90) {
@@ -39,7 +42,7 @@ getVids()
   })
   .then(data => {
     console.log('DISPLAYING');
-    $(".slides").css("display","block");
+    $(".parallax").css("display","block");
   })
  .catch(error => console.log('ERROR: ', error));
 
