@@ -1,10 +1,9 @@
-.slides {
-  display: none;
+body {
+  margin: 0px;
 }
 
 img {
-  width: 110% !important;
-  margin-left: -5%;
+  width: 100%;
 }
 
 .parallax {
@@ -29,8 +28,18 @@ img {
   transform: translateZ(-1px) scale(2);
 }
 
+.caption {
+  height: 246px;
+  top: 48.5%;
+  border-top: 20px;
+  border-left: 0px;
+  border-bottom: 20px;
+  border-right: 0px;
+  border-color: white;
+  border-style: solid;
+}
+
 .captions {
-  position: absolute;
   font-family: Helvetica;
   font-size: 18px;
   color: white;
@@ -38,7 +47,6 @@ img {
   background-color: transparent;
   text-align: center;
   width: 100%;
-  top: 48.5%;
   transform: translateZ(0) scale(1);
 }
 
