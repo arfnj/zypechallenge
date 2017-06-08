@@ -21,7 +21,7 @@ getVids()
   .then(response => {
     videos = JSON.parse(response).response;
     let slideshow = $.map(videos,function(video){
-      return (`<div class="container"><div class="layer thumb"><img src="${video.thumbnails[4].url}"></div><div class="layer caption"><span></b>${video.title}</b></span></div></div>`);
+      return (`<div class="container" style="background-image:url('${video.thumbnails[4].url}');" background-size: "cover", background-position: "center center"><span></b>${video.title}</b></span></div>`);
     });
     $(".slides").html(slideshow.join(''));
   }, error => console.log('ERROR: ', error))
