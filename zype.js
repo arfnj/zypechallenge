@@ -42,6 +42,8 @@ getVids()
   })
   .then(data => {
     console.log('DISPLAYING');
+    console.log(document.getElementById('thumbstack'));
+    // $(".caption").css("height",thumbsHeight/videos.length-40);
     $(".parallax").css("display","block");
   })
  .catch(error => console.log('ERROR: ', error));

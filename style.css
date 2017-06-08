@@ -25,11 +25,12 @@ img {
 }
 
 .thumbs {
-  transform: translateZ(-1px) scale(2);
+  position: absolute;
+  transform: translateZ(-15px) scale(16);
 }
 
 .caption {
-  height: 206px;
+  height: 193px;
   border-top: 20px;
   border-left: 0px;
   border-bottom: 20px;
@@ -55,7 +56,7 @@ img {
   background-color: transparent;
   text-align: center;
   width: 100%;
-  transform: translateZ(0) scale(1);
+  transform: translateZ(-10px) scale(11);
 }
 
 span {
