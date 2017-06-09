@@ -22,7 +22,7 @@ getVids()
     let captionHeight = window.innerWidth*0.5625-40;
     let slideshow = [],captions = [];
     videos.forEach(video => {
-      slideshow.push(`<img src="${video.thumbnails[4].url}">`);
+      slideshow.push(`<img src="${video.thumbnails[1].url}">`);
       captions.push(`<div class="caption" style="height: ${captionHeight}px;"><span></b>${video.title}</b></span></div>`)
     });
     $(".thumbs").append(slideshow.join(''));
