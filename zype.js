@@ -1,5 +1,6 @@
 const xhr = new XMLHttpRequest();
 const defaultImg = "./testpattern-hd-1080.png"
+const captionHeight = window.innerWidth*0.5625;
 
 const getVids = () => {
   return new Promise((resolve, reject) => {
@@ -17,18 +18,16 @@ const getVids = () => {
 }
 
 const parallaxer = () => {
-    let pos = $(window).scrollTop();
+    let pos = $(window).scrollTop()*.1;
     $(".caption").each(function() {
         let $element = $(this);
-        var height = $element.height()+100;
-        $(this).css('backgroundPosition', '50% ' + Math.round((height-pos)*.1) + 'px');
+        $(this).css('backgroundPosition', '50% ' + (pos*-1)+ 'px');
     });
 };
 
 getVids()
   .then(response => {
     let videos = JSON.parse(response).response;
-    let captionHeight = window.innerWidth*0.5625;
     let slideshow = $.map(videos,function(video){
       return (`<div class="caption" style="background-image: url(${video.thumbnails[1].url}); height: ${captionHeight}px;"><span></b>${video.title}</b></span></div>`);
     });

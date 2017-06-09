@@ -24,8 +24,8 @@ html, body {
   z-index: 10;
   background-color: transparent;
   background-size: cover;
-  background-size: 110%;
-  background-position: center center;
+  background-size: 200%;
+  background-position: center top;
   display: -webkit-flexbox;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -39,4 +39,5 @@ html, body {
 
 span {
   background-color: black;
+  text-align: center;
 }
