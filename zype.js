@@ -21,12 +21,14 @@ getVids()
   .then(response => {
     videos = JSON.parse(response).response;
     let slideshow = [],captions = [];
-    videos.forEach(video => {
+    videos.forEach(video => /*{
       slideshow.push(`<img src="${video.thumbnails[4].url}">`);
       captions.push(`<div class="caption"><span></b>${video.title}</b></span></div>`)
     });
     $(".thumbs").append(slideshow.join(''));
-    $(".captions").append(captions.join(''));
+    $(".captions").append(captions.join(''));*/
+      slideshow.push(`<div class="parallax"><div class="layer thumbs"><img src="${video.thumbnails[4].url}"></div><div class="captions"><div class="caption"><span></b>${video.title}</b></span></div></div></div>`))
+    $(".main").append(slideshow.join(''));
   }, error => console.log('ERROR: ', error))
   .then(data => {
     console.log('EXAMINING');
@@ -44,7 +46,7 @@ getVids()
     console.log('DISPLAYING');
     console.log(document.getElementById('thumbstack'));
     // $(".caption").css("height",thumbsHeight/videos.length-40);
-    $(".parallax").css("display","block");
+    $(".main").css("display","block");
   })
  .catch(error => console.log('ERROR: ', error));
 

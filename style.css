@@ -6,14 +6,16 @@ img {
   width: 100%;
 }
 
-.parallax {
+.main {
   display: none;
+}
+
+.parallax {
   position: relative;
   width: 100%;
   perspective: 1px;
   overflow-x: hidden;
   overflow-y: auto;
-  height: 100vh;
 }
 
 .layer {
