@@ -1,28 +1,40 @@
+html, body {
+  height: 100%;
+}
+
 .slides {
   display: none;
-}
-
-img {
-  width: 110% !important;
-  margin-left: -5%;
-}
-
-.container {
-  position: relative;
-  width: 100%;
+  height: 100%;
 }
 
 
 .caption {
-  position: absolute;
+  width: 100%;
+  border-top: 20px;
+  border-left: 0px;
+  border-bottom: 20px;
+  border-right: 0px;
+  border-color: white;
+  border-style: solid;
+  display: block;
+  position: relative;
   font-family: Helvetica;
   font-size: 5vw;
   color: white;
   z-index: 10;
   background-color: transparent;
-  text-align: center;
-  width: 100%;
-  top: 48.5%;
+  background-size: cover;
+  background-size: 110%;
+  background-position: center center;
+  display: -webkit-flexbox;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center;
 }
 
 span {

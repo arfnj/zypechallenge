@@ -1,6 +1,5 @@
 const xhr = new XMLHttpRequest();
 const defaultImg = "./testpattern-hd-1080.png"
-let videos, slideshow;
 
 const getVids = () => {
   return new Promise((resolve, reject) => {
@@ -17,13 +16,23 @@ const getVids = () => {
   });
 }
 
+const parallaxer = () => {
+    let pos = $(window).scrollTop();
+    $(".caption").each(function() {
+        let $element = $(this);
+        var height = $element.height()+100;
+        $(this).css('backgroundPosition', '50% ' + Math.round((height-pos)*.1) + 'px');
+    });
+};
+
 getVids()
   .then(response => {
-    videos = JSON.parse(response).response;
+    let videos = JSON.parse(response).response;
+    let captionHeight = window.innerWidth*0.5625;
     let slideshow = $.map(videos,function(video){
-      return (`<div class="container"><div><img src="${video.thumbnails[1].url}"></div><div class="caption"><span></b>${video.title}</b></span></div></div>`);
+      return (`<div class="caption" style="background-image: url(${video.thumbnails[1].url}); height: ${captionHeight}px;"><span></b>${video.title}</b></span></div>`);
     });
-    $(".slides").html(slideshow.join(''));
+    $(".slides").append(slideshow.join(''));
   }, error => console.log('ERROR: ', error))
   .then(data => {
     console.log('EXAMINING');
@@ -39,8 +48,12 @@ getVids()
   })
   .then(data => {
     console.log('DISPLAYING');
-    $(".slides").css("display","block");
+    $(".slides").toggle();
   })
  .catch(error => console.log('ERROR: ', error));
 
+document.getElementsByTagName("BODY")[0].onresize = () => {
+  $(".caption").css("height",window.innerWidth*0.5625);
+ };
 
+$(window).bind('scroll', parallaxer);
