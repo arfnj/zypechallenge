@@ -1,5 +1,5 @@
 const xhr = new XMLHttpRequest();
-const defaultImg = "./unicorn.jpeg"
+const defaultImg = "./testpattern-hd-1080.png"
 let videos, slideshow;
 
 const getVids = () => {
@@ -21,7 +21,7 @@ getVids()
   .then(response => {
     videos = JSON.parse(response).response;
     let slideshow = $.map(videos,function(video){
-      return (`<div class="container"><div><img src="${video.thumbnails[4].url}"></div><div class="caption"><span></b>${video.title}</b></span></div></div>`);
+      return (`<div class="container"><div><img src="${video.thumbnails[1].url}"></div><div class="caption"><span></b>${video.title}</b></span></div></div>`);
     });
     $(".slides").html(slideshow.join(''));
   }, error => console.log('ERROR: ', error))

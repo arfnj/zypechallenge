@@ -16,7 +16,7 @@ img {
 .caption {
   position: absolute;
   font-family: Helvetica;
-  font-size: 18px;
+  font-size: 5vw;
   color: white;
   z-index: 10;
   background-color: transparent;
