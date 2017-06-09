@@ -1,6 +1,5 @@
 const xhr = new XMLHttpRequest();
 const defaultImg = "./testpattern-hd-1080.png"
-let videos;
 
 const getVids = () => {
   return new Promise((resolve, reject) => {
@@ -19,11 +18,12 @@ const getVids = () => {
 
 getVids()
   .then(response => {
-    videos = JSON.parse(response).response;
+    let videos = JSON.parse(response).response;
+    let captionHeight = window.innerWidth*0.5625-40;
     let slideshow = [],captions = [];
     videos.forEach(video => {
       slideshow.push(`<img src="${video.thumbnails[4].url}">`);
-      captions.push(`<div class="caption"><span></b>${video.title}</b></span></div>`)
+      captions.push(`<div class="caption" style="height: ${captionHeight}px;"><span></b>${video.title}</b></span></div>`)
     });
     $(".thumbs").append(slideshow.join(''));
     $(".captions").append(captions.join(''));
@@ -42,10 +42,12 @@ getVids()
   })
   .then(data => {
     console.log('DISPLAYING');
-    console.log(document.getElementById('thumbstack'));
-    // $(".caption").css("height",thumbsHeight/videos.length-40);
     $(".parallax").css("display","block");
   })
  .catch(error => console.log('ERROR: ', error));
+
+ document.getElementsByTagName("BODY")[0].onresize = () => {
+  $(".caption").css("height",window.innerWidth*0.5625-40);
+ };
 
 

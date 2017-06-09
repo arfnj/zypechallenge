@@ -30,7 +30,6 @@ img {
 }
 
 .caption {
-  height: 193px;
   border-top: 20px;
   border-left: 0px;
   border-bottom: 20px;
@@ -50,7 +49,7 @@ img {
 
 .captions {
   font-family: Helvetica;
-  font-size: 18px;
+  font-size: 5vw;
   color: white;
   z-index: 10;
   background-color: transparent;
