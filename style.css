@@ -3,26 +3,22 @@ html, body {
 }
 
 .slides {
-  display: none;
   height: 100%;
 }
 
 
 .caption {
   width: 100%;
-  border-top: 20px;
+  border-top: 10px;
   border-left: 0px;
-  border-bottom: 20px;
+  border-bottom: 10px;
   border-right: 0px;
   border-color: white;
   border-style: solid;
-  display: block;
   position: relative;
   font-family: Helvetica;
   font-size: 5vw;
   color: white;
-  z-index: 10;
-  background-color: transparent;
   background-size: cover;
   background-size: 200%;
   background-position: center top;

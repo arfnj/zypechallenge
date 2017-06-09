@@ -1,7 +1,11 @@
+//Create new XMLHttpRequest instance for retrieving data from Zype API
 const xhr = new XMLHttpRequest();
+//Path to default image when thumbnail not provided - not utilized in this version
 const defaultImg = "./testpattern-hd-1080.png"
+//Capture window width and use it to determine div height, based on 1.78 width to height ratio of thumbnail images
 const captionHeight = window.innerWidth*0.5625;
 
+//Create asynchronous function that will retrieve info from Zype API
 const getVids = () => {
   return new Promise((resolve, reject) => {
     xhr.open('GET', "https://api.zype.com/videos/?api_key=H7CF2IHbEc6QIrMVwb2zfd9VI14HHGAfYax1eHEUsJ4voYuqWF2oWvByUOhERva_");
@@ -17,15 +21,17 @@ const getVids = () => {
   });
 }
 
+//Create function to handle parallax effect
 const parallaxer = () => {
     let pos = $(window).scrollTop()*.1;
     $(".caption").each(function() {
-        let $element = $(this);
         $(this).css('backgroundPosition', '50% ' + (pos*-1)+ 'px');
     });
 };
 
+//Invoke function that retrieves data from Zype API
 getVids()
+//When asynchronous function returns, parse the data, map each video to an HTML div, then append all divs to the DOM
   .then(response => {
     let videos = JSON.parse(response).response;
     let slideshow = $.map(videos,function(video){
@@ -33,26 +39,12 @@ getVids()
     });
     $(".slides").append(slideshow.join(''));
   }, error => console.log('ERROR: ', error))
-  .then(data => {
-    console.log('EXAMINING');
-    let i = 0;
-    $("div.slides").find("img").each(function() {
-      i++;
-      console.log(i);
-      if ($(this)[0].naturalWidth === 120 && $(this)[0].naturalHeight === 90) {
-        console.log('FIXING');
-        $(this).attr("src", defaultImg);
-      }
-    })
-  })
-  .then(data => {
-    console.log('DISPLAYING');
-    $(".slides").toggle();
-  })
  .catch(error => console.log('ERROR: ', error));
 
+//Create onresize listener that adjusts div height automatically when window resizes
 document.getElementsByTagName("BODY")[0].onresize = () => {
   $(".caption").css("height",window.innerWidth*0.5625);
  };
 
+//Bind window scrolling to parallaxer function, creating parallax effect
 $(window).bind('scroll', parallaxer);
